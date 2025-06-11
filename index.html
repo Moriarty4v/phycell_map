@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Carte de France Interactive</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      text-align: center;
+    }
+    .carte {
+      position: relative;
+      width: 984px;
+      height: 980px;
+      margin: 40px auto;
+      border: 2px solid #333;
+    }
+    .carte img.base {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .point {
+      position: absolute;
+      height: 50px;
+      width: auto;
+      border-radius: 8px;
+      cursor: pointer;
+      background: transparent;
+      box-shadow: none;
+    }
+    .info {
+      position: absolute;
+      display: none;
+      background: white;
+      border: 1px solid #333;
+      padding: 10px;
+      z-index: 10;
+      min-width: 200px;        
+      word-wrap: break-word;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mais où sont pasés les PhyCells ?</h1>
+  <div class="carte" id="carte">
+    <img src="france.jpeg" class="base" alt="Carte de France">
+
+    <!-- Marseille (2) -->
+    <img src="moi.png" class="point" style="top: 850px; left: 720px;" data-info="<b> JULIE L </b> <br> <b> Labo: </b> IUSTI à Marseille avec Yoël Forterre et Olivier Pouliquen  <br> Biomecanics of the gravitropic response in roots <br> <b> Insights : </b> 
+">
+
+    <img src="Cyril.png" class="point" style="top: 860px; left: 755px;" data-info=" <b> CYRIL </b>
+
+<br> <b> Labo: </b> Laboratoire Adhésion Inflammation, Inserm U1067 à Marseille avec Arnauld Sergé et Magali Irla
+<br> Blocage de la migration transendothéliale des cellules leucémiques T
+<br> <b> Insights </b> Beaucoup de cytométrie en flux pour de la quantification de protéine et de la microscopie haute résolution pour suivre des molécules individuellement
+">
+
+    <!-- Toulouse (1) -->
+    <img src="photo3.png" class="point" style="top: 840px; left: 465px;" data-info="Toulouse">
+
+    <!-- Lille (1) -->
+    <img src="Emma.png" class="point" style="top: 53px; left: 588px;" data-info="<b> EMMA </b> <br> <b> Labo: </b> I.E.M.N. à Villeneuve d'Ascq avec Alexandre Baccouche <br> Development of artificial calcifying cells: modelling biolineralization mechanisms in foraminifera <br> <b> Insights : </b>tout me plaît, je m'éclate !
+">
+
+    <!-- Grenoble (1) -->
+    <img src="photo5.png" class="point" style="top: 662px; left: 804px;" data-info="Grenoble">
+
+    <!-- Paris (5) -->
+    <img src="AlexandreB.png" class="point" style="top: 275px; left: 465px;" data-info=" <b> ALEXANDRE B </b>
+<br> <b> Labo: </b> Institut Jacques Monod à Paris avec Benoit Ladoux
+<br> Variation de la visco-élasticité intracellulaire au cours de la différenciation cellulaire
+<br> <b> Insights </b> J'étudie la rotation d'aiguille super-paramagnétique dans le cytoplasme de keratinocytes au cours de leur différenciation pour réaliser une mesure de la viscosité et de l'élasticité intracellulaire et j'en déduis les paramètres biologique et les paramètres physiques qui influent sur ces derniers.">
+    <img src="photo7.png" class="point" style="top: 250px; left: 480px;" data-info="Paris - Photo 2">
+    <img src="photo8.png" class="point" style="top: 260px; left: 500px;" data-info="Paris - Photo 3">
+    <img src="photo9.png" class="point" style="top: 285px; left: 515px;" data-info="Paris - Photo 4">
+    <img src="photo10.png" class="point" style="top: 305px; left: 490px;" data-info="Paris - Photo 5">
+
+    <!-- Strasbourg (5) -->
+    <img src="camille.png" class="point" style="top: 295px; left: 940px;" data-info="<b>CAMILLE</b>
+<br> <b> Labo: </b> ICS à Strasbourg avec Pierre Muller et Thierry Charitat
+<br> Tribology of phospholipide layer: velocity profile characterization
+<br>  <b> Insights: </b> 
+<br>  <img src='activites_camille.jpg' width='500' style='margin-top: 5px;'>">
+
+
+
+    <img src="Thierry.png" class="point" style="top: 250px; left: 920px;" data-info="Voici un patchwork qui résume mes activités pendant cette période un peu particulière. 
+Suite à ma chute sur le verglas tout début février j'ai été immobilisé 2 mois. J'en ai profité pour compléter ma série de photos de l'église St Maurice place Arnold (vue depuis ma fenêtre....). 
+Et depuis quelques semaines je reprends progressivement les balades sur les sentiers de randonnée où j'ai croisé deux jolis papillons...
+<br>  <img src='papillons_thierry.jpg' width='400' style='margin-top: 5px;'>
+<br>  <img src='place_arnold_thierry.png' width='400' style='margin-top: 5px;'>">
+
+
+    <img src="Hugo.png" class="point" style="top: 260px; left: 960px;" data-info="<b> HUGO </b>
+
+<br> <b> Labo : </b> ICS à Strasbourg avec Thierry Charitat, Pierre Muller et Jean Daillant
+<br> Fluctuations de membrane activées par la Bacteriorhodopsin (ou en anglais Membrane Fluctuations activated by Bacteriorhodopsin)
+<br> <b> Insights </b> on joue au foot le mercredi et tout le monde est super gentil ">
+
+    <img src="photo14.png" class="point" style="top: 290px; left: 910px;" data-info="Strasbourg - Photo 4">
+    <img src="photo15.png" class="point" style="top: 220px; left: 940px;" data-info="Strasbourg - Photo 5">
+
+    <div class="info" id="infoBox"></div>
+  </div>
+
+  <script>
+    const points = document.querySelectorAll('.point');
+    const infoBox = document.getElementById('infoBox');
+
+    points.forEach(point => {
+      point.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const infoText = point.getAttribute('data-info');
+	infoBox.innerHTML = infoText;
+        infoBox.style.left = point.offsetLeft + 'px';
+	infoBox.style.top = (point.offsetTop - 120) + 'px';
+        infoBox.style.display = 'block';
+      });
+    });
+
+    document.addEventListener('click', () => {
+      infoBox.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
