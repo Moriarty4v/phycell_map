@@ -116,9 +116,10 @@ Et depuis quelques semaines je reprends progressivement les balades sur les sent
         e.stopPropagation();
         const infoText = point.getAttribute('data-info');
 	infoBox.innerHTML = infoText;
+        infoBox.style.display = 'block';
         infoBox.style.left = (point.offsetLeft - infoBox.offsetWidth - 10) + 'px';
 	infoBox.style.top = (point.offsetTop - 120) + 'px';
-        infoBox.style.display = 'block';
+
       });
     });
 
