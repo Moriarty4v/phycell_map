@@ -116,7 +116,7 @@ Et depuis quelques semaines je reprends progressivement les balades sur les sent
         e.stopPropagation();
         const infoText = point.getAttribute('data-info');
 	infoBox.innerHTML = infoText;
-        infoBox.style.left = point.offsetLeft + 'px';
+        infoBox.style.left = (point.offsetLeft - infoBox.offsetWidth - 10) + 'px';
 	infoBox.style.top = (point.offsetTop - 120) + 'px';
         infoBox.style.display = 'block';
       });
